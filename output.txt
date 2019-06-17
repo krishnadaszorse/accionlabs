@@ -18,10 +18,11 @@
    + Two
     - Three
 3.1.1.1 Of numbers
+3.2 Of numbers again
   - Another line
-3.2 Less Numbers
+3.3 Less Numbers
   - Text
-3.2.1 More Numbers
+3.3.1 More Numbers
   - Blah
 4 One number again
   - The last line
