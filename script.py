@@ -23,7 +23,7 @@ def main():
                 number = str(count)
                 sys.stdout.write(number+' '+value+'\n')
                 count=count+1
-            elif key.count('*')==number.count('.')+1:
+            elif key.count('*')-1==number.count('.'):# checking count of * same as previous
                 if number.count('.')>0:
                     last_node=int(number.split('.')[-1])
                     number='.'.join(
@@ -32,14 +32,17 @@ def main():
                 else:
                     number=str(count)+'.1'
                 sys.stdout.write(number+' '+value+'\n')
-            elif key.count('*')==number.count('.')+2:
-                number=number+'.1'
+            elif key.count('*')-1>number.count('.'):# checking count of * grater than previous
+                number=number+''.join(
+                    ['.1' for x in range(
+                        key.count('*')-number.count('.')-1)])
                 sys.stdout.write(number+' '+value+'\n')
-            elif key.count('*')==number.count('.'):
+            elif key.count('*')-1<number.count('.'):# checking count of * less than previous
                 if number.count('.')>0:
-                    last_node=int(number.split('.')[-2])
+                    last_node_index=key.count('*')-number.count('.')-2
+                    last_node=int(number.split('.')[last_node_index])
                     number='.'.join(
-                        number.split('.')[:-2]
+                        number.split('.')[:last_node_index]
                         +[str(last_node+1)])
                 else:
                     number=str(count)+'.1'
